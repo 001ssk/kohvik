@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       LEHE PEALKIRI JA KIRJELDUS (muuda oma kohviku järgi)
+       ============================================================ -->
+  <title>Meeli kohvik — aeglane lõuna ja hea kohv</title>
+  <meta name="description" content="Meeli kohvik pakub rahulikku kohvikukogemust ja maitsvat lõunamenüüd. Avatud 11:30–14:00." />
+
+  <!-- Sotsiaalmeedia eelvaade -->
+  <meta property="og:title" content="Meeli kohvik" />
+  <meta property="og:description" content="Aeglane lõuna, hea kohv ja kodune õhkkond." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts: Fraunces (serif pealkirjad), DM Sans (tekst), DM Mono (sildid/hinnad) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Klaviatuuriga navigeerijatele: hüppa põhisisu juurde -->
+  <a class="skip-link" href="#main">Liigu põhisisu juurde</a>
+
+  <!-- ============================================================
+       PÄIS / NAVIGATSIOON
+       ============================================================ -->
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-inner">
+      <!-- KOHVIKU NIMI / LOGO -->
+      <a href="#hero" class="brand" aria-label="Meeli kohvik avaleht">
+        <span class="brand-mark" aria-hidden="true"></span>
+        MEELI&nbsp;OÜ
+      </a>
+
+      <!-- Töölaua navigatsioon -->
+      <nav class="nav" aria-label="Peamenüü">
+        <a href="#hours">Lahtiolek</a>
+        <a href="#menu">Menüü</a>
+        <a href="#about">Meist</a>
+        <a href="#contact">Kontakt</a>
+      </nav>
+
+      <a href="#reserve" class="btn btn-red nav-cta">Broneeri laud</a>
+
+      <!-- Mobiilimenüü nupp -->
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Ava menüü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobiilne rippmenüü -->
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobiilimenüü" hidden>
+      <a href="#hours">Lahtiolek</a>
+      <a href="#menu">Menüü</a>
+      <a href="#about">Meist</a>
+      <a href="#contact">Kontakt</a>
+      <a href="#reserve" class="btn btn-red">Broneeri laud</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================================
+         1. HERO / AVAVAADE
+         Taustapilt: vaheta .hero-bg taustapilt style.css failis
+         ============================================================ -->
+    <section class="hero" id="hero" aria-labelledby="heroTitle">
+      <!-- Parallax-taustapilt (liigub kerimisel) -->
+      <div class="hero-bg" data-parallax></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <!-- Dekoratiivne kohviaur -->
+      <svg class="steam" viewBox="0 0 60 120" aria-hidden="true">
+        <path d="M20 110 C10 90 30 80 20 60 C12 44 28 34 20 14" />
+        <path d="M38 110 C30 92 46 82 38 62 C30 46 46 36 38 16" />
+      </svg>
+
+      <div class="wrap hero-inner">
+        <p class="eyebrow eyebrow-light">Meeli kohvik · avatud 11:30–14:00</p>
+        <h1 class="hero-title" id="heroTitle">
+          Aeglane lõuna,<br /><em>hea kohv.</em>
+        </h1>
+        <p class="hero-sub">
+          Meeli kohvik on koht, kus aeg peatuvad, kohv on soe ja päevaplaan tuleb
+          pausina. Siin on meeldiv restaureerida läbikäik ja võtta aega.
+        </p>
+        <div class="hero-actions">
+          <a href="#reserve" class="btn btn-red">Broneeri laud</a>
+          <a href="#menu" class="btn btn-ghost">Vaata menüüd</a>
+        </div>
+        <div class="hero-note">
+          <span class="hero-note-badge">Praegu lahti</span>
+          <span>11:30–14:00</span>
+        </div>
+      </div>
+
+      <!-- Kerimisvihje -->
+      <a href="#hours" class="scroll-cue" aria-label="Keri edasi">
+        <span>Keri</span>
+        <span class="scroll-cue-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+
+    <!-- ============================================================
+         2. LAHTIOLEKUAJAD
+         Muuda kellaaegu allpool. "is-today" klass tõstab tänase päeva esile.
+         ============================================================ -->
+    <section class="section hours" id="hours" aria-labelledby="hoursTitle">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Lahtiolek</p>
+          <h2 class="section-title" id="hoursTitle">Avame just lõunaks</h2>
+          <p class="section-lead">Iga päev 11:30–14:00. Soe toit, hea kohv ja aeglane hetk just sinule.</p>
+        </div>
+
+        <div class="hours-summary reveal">
+          <div class="hours-summary-inner">
+            <span class="hours-summary-label">Lahtiolek</span>
+            <div class="hours-summary-time">11:30 – 14:00</div>
+            <p class="hours-summary-copy">
+              Avatud iga päev – tule, võta hetk maha ja naudi midagi head.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         3. MENÜÜ
+         Lisa/muuda ridu. Iga kategooria on üks .menu-panel.
+         Tab'id vahetavad kategooriaid (script.js).
+         ============================================================ -->
+    <section class="section menu" id="menu" aria-labelledby="menuTitle">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Menüü</p>
+          <h2 class="section-title" id="menuTitle">Meeli Kohvik</h2>
+          <p class="section-lead">Menüü valik.</p>
+        </div>
+
+        <div class="menu-tabs reveal" role="tablist" aria-label="Menüü kategooriad">
+          <button class="menu-tab is-active" role="tab" aria-selected="true" aria-controls="panel-salatid" id="tab-salatid">Salatid</button>
+          <button class="menu-tab" role="tab" aria-selected="false" aria-controls="panel-supistid" id="tab-supistid">Külmlaua suupisted</button>
+          <button class="menu-tab" role="tab" aria-selected="false" aria-controls="panel-soojatoit" id="tab-soojatoit">Sooja toidu valik</button>
+          <button class="menu-tab" role="tab" aria-selected="false" aria-controls="panel-kupsised" id="tab-kupsised">Küpsetised</button>
+        </div>
+
+        <div class="menu-panel is-active" id="panel-salatid" role="tabpanel" aria-labelledby="tab-salatid">
+          <ul class="menu-list">
+            <li class="menu-item"><div class="menu-row"><h3>Kartuli-singisalat</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">12.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Sünnipäevasalat</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">12.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Singi-oasalat</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">12.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Rosolje heeringaga</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">12.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Pasta-singisalat</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">12.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Pasta suitsukana salat</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">12.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Makra-riisisalat</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">12.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Värske salat</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">12.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Kapsa-porgandisalat</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">10.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Peedi-küüslaugusalat</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">10.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Riisi-suitsukana salat</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">12.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Kapsa-värske kurgi salat</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">15.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Singi-juustu viinamarja salat</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">20.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Valge lihasalat</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">12.-</span></div></li>
+          </ul>
+        </div>
+
+        <div class="menu-panel" id="panel-supistid" role="tabpanel" aria-labelledby="tab-supistid" hidden>
+          <ul class="menu-list">
+            <li class="menu-item"><div class="menu-row"><h3>Singirullid küüslaugujuustuga</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">24.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Klassikalised täidetud munad</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">1.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Suupisted rukkileiva ja kilufileega</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">24.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Suupisted rukkileiva ja heeringafileega</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">24.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Suupiste korvikesed (erinevad täidised)</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">30.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Suupisted rukkileiva kausikesed</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">24.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Võileivatort suitsukalaga</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">28.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Võileivatort singiga</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">28.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Võileivatort kanaga</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">28.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Lavazzirullid lõhega</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">30.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Paneeritud sealiha marinaadis</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">28.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Krõbekana amps dipikastmega</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">24.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Lihapallid mädarõika kastmega</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">24.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Liha-juustu valik</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">35.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Heeringafilee sibula ja hapukoorega</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">20.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Köögivilja valik</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">14.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Puuvilja valik</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">18.-</span></div></li>
+          </ul>
+        </div>
+
+        <div class="menu-panel" id="panel-soojatoit" role="tabpanel" aria-labelledby="tab-soojatoit" hidden>
+          <ul class="menu-list">
+            <li class="menu-item"><div class="menu-row"><h3>Šnitsel seavälisfileest</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">26.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Šnitsel kanafileest</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">26.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Hautatud liha</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">24.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Pikkpoiss seahakklihast</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">24.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Kotletid seahakklihast</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">24.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Ahjus küpsetatud verivorstid</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">17.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Ahjuliha</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">24.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Ahjukanakintsud</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">24.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Külm kaste / dipikaste</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">6.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Soe kaste või lihaleeme kaste</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">6.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Juurikad (brokoli, lillkapsas, porgand, aeduba)</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">12.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Keedukartul</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">6.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Kartulipuder</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">10.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Mulgipuder</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">12.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Kapsarullid hakklihaga</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">20.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Guljašš sealihast</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">18.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Hakklihakaste seahakklihast</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">18.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Seamaksast strogonov</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">16.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Kurzeme strogonov sealihast</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">18.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Makaronid seahakklihaga</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">16.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Plohv sealihaga</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">18.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Plohv kanalihaga</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">18.-</span></div></li>
+          </ul>
+        </div>
+
+        <div class="menu-panel" id="panel-kupsised" role="tabpanel" aria-labelledby="tab-kupsised" hidden>
+          <ul class="menu-list">
+            <li class="menu-item"><div class="menu-row"><h3>Kringel rosinatega ja šokolaadiglasuuriga</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">18.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Moonikringel</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">16.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Kohupiima plaadikook (õun, vaarikas, rabarber)</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">18.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Soolane kringel</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">20.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Soolane kringel erinevate juustudega</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">22.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Pirukad (liha, singi, juusturullid, juustu-singirullid)</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">18.-</span></div></li>
+            <li class="menu-item"><div class="menu-row"><h3>Saiakesed (õunarullid, halvaarullid, kaneelirullid, moonirullid)</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price">20.-</span></div></li>
+          </ul>
+        </div>
+
+        <p class="menu-note reveal"></p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         4. LAUA BRONEERIMINE
+         Vorm on visuaalselt valmis. Tagumine loogika (saatmine) on
+         praegu ainult näidis — vaheta form action või lisa JS hiljem.
+         ============================================================ -->
+    <section class="section reserve" id="reserve" aria-labelledby="reserveTitle">
+      <div class="wrap reserve-inner">
+        <div class="reserve-copy reveal">
+          <p class="eyebrow">Broneerimine</p>
+          <h2 class="section-title" id="reserveTitle">Võtame sinuga ühendust</h2>
+          <p class="section-lead">
+            Kui soovid loovalt aega veeta või lihtsalt teada saada, kas koht on vaba,
+            siis kirjuta meile. Väiksemad seltskonnad on alati oodatud ka ilma broneeringuta.
+          </p>
+          <ul class="reserve-points">
+            <li>Kinnitus e-postiga tunni jooksul</li>
+            <li>Tasuta tühistus kuni 2 tundi ette</li>
+            <li>Erisoovid? Kirjuta kommentaari lahtrisse</li>
+          </ul>
+        </div>
+
+        <!-- Näidisvorm. novalidate eemaldatud, et brauser kontrolliks välju. -->
+        <form class="reserve-form reveal" id="reserveForm">
+          <div class="reserve-form-head">
+            <span class="reserve-pill">Broneeri koht</span>
+            <div class="reserve-form-summary">
+              <span class="reserve-summary-label">Soovitud aeg</span>
+              <strong>11:30–14:00 · iga päev</strong>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="rf-name">Nimi</label>
+            <input type="text" id="rf-name" name="name" placeholder="Sinu nimi" required />
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="rf-date">Kuupäev</label>
+              <select id="rf-date" name="date" required>
+                <option value="" disabled selected>Vali päev</option>
+                <option>Täna</option>
+                <option>Homme</option>
+                <option>Sel nädalal</option>
+                <option>Järgmine nädal</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="rf-time">Kellaaeg</label>
+              <select id="rf-time" name="time" required>
+                <option value="" disabled selected>Vali aeg</option>
+                <option>11:30</option>
+                <option>12:00</option>
+                <option>12:30</option>
+                <option>13:00</option>
+                <option>13:30</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="rf-guests">Inimeste arv</label>
+              <select id="rf-guests" name="guests" required>
+                <option value="" disabled selected>Vali…</option>
+                <option>1</option><option>2</option><option>3</option>
+                <option>4</option><option>5</option><option>6</option>
+                <option>7+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="rf-phone">Telefon</label>
+              <input type="tel" id="rf-phone" name="phone" placeholder="+372 …" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="rf-email">E-post</label>
+            <input type="email" id="rf-email" name="email" placeholder="sina@näide.ee" required />
+          </div>
+
+          <div class="field">
+            <label for="rf-note">Kommentaar <span class="optional">(valikuline)</span></label>
+            <textarea id="rf-note" name="note" rows="2" placeholder="Erisoovid, allergiad…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-red btn-block">Saada broneering</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         5. MEIST
+         ============================================================ -->
+    <section class="section about" id="about" aria-labelledby="aboutTitle">
+      <div class="wrap about-inner">
+        <!-- Pilt: vaheta URL või pane oma foto -->
+        <div class="about-media reveal">
+          <img
+            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80"
+            alt="Kohviku sisevaade — puidust lauad ja soe valgus"
+            loading="lazy" width="1200" height="1500" />
+          <span class="about-badge">Est. 2019</span>
+        </div>
+
+        <div class="about-copy reveal">
+          <p class="eyebrow">Meist</p>
+          <h2 class="section-title" id="aboutTitle">Meeli kohvik – kodused maitsed, värsked küpsetised ja hea tunne</h2>
+          <p>
+            Meeli kohvik avas oma uksed 2023. aastal sooviga pakkuda inimestele
+            midagi lihtsat, head ja kodust. Meie juures valmivad toidud, pirukad
+            ja saiakesed, mis on tehtud hoole ja armastusega ning mõeldud
+            selleks, et iga külastaja tunneks end hästi.
+          </p>
+          <p>
+            Meie menüüst leiab koduseid toite, mis sobivad nii kiireks lõunaks
+            kui ka mõnusaks söömiseks sõprade või perega. Lisaks küpsetame iga
+            hommik värskelt pirukaid ja saiakesi, et need jõuaksid meie
+            klientideni võimalikult värskelt ja maitsvalt.
+          </p>
+          <p>
+            Meeli kohvikust saab tellida ka toite ja küpsetisi erinevateks
+            üritusteks – olgu selleks sünnipäev, koosviibimine, tähtpäev,
+            tööüritus või mõni muu oluline päev. Paneme tellimused kokku
+            vastavalt soovidele, et külalistele jätkuks midagi head ja kodust.
+            Meie jaoks on oluline, et toit oleks värske, maitsev ja tehtud
+            südamega. Soovime pakkuda just neid maitseid, mis meenutavad
+            kodu ja tekitavad hea tunde.
+          </p>
+          <p>
+            Tule läbi, võta midagi head kaasa või istu hetkeks meie juures –
+            Meeli kohvik ootab sind!
+          </p>
+
+          <ul class="values">
+            <li>
+              <span class="value-num">01</span>
+              <span class="value-body"><strong>Väikesed partiid.</strong> Värske röst iga nädal.</span>
+            </li>
+            <li>
+              <span class="value-num">02</span>
+              <span class="value-body"><strong>Kohalik köök.</strong> Hooaja saak, tuttavad talunikud.</span>
+            </li>
+            <li>
+              <span class="value-num">03</span>
+              <span class="value-body"><strong>Aega maha.</strong> Ei kiirustamist, ei müra.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         6. KONTAKT + KAART
+         ============================================================ -->
+    <section class="section contact" id="contact" aria-labelledby="contactTitle">
+      <div class="wrap contact-inner">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Kontakt</p>
+          <h2 class="section-title" id="contactTitle">Tule läbi</h2>
+
+          <!-- Muuda aadress, telefon, e-post -->
+          <dl class="contact-list">
+            <div>
+              <dt>Aadress</dt>
+              <dd>Pilka tee 5-6<br />62210 Luunja vald, Eesti</dd>
+            </div>
+            <div>
+              <dt>Telefon</dt>
+              <dd><a href="tel:+37256942906">+372 5694 2906</a></dd>
+            </div>
+            <div>
+              <dt>E-post</dt>
+              <dd><a href="mailto:meelirannik@gmail.com">meelirannik@gmail.com</a></dd>
+            </div>
+          </dl>
+
+          <!-- Sotsiaalmeedia — muuda lingid -->
+          <div class="socials" aria-label="Sotsiaalmeedia">
+            <a href="#" aria-label="Instagram" class="social">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100092671432273&locale=et_EE5" aria-label="Facebook" class="social" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h2V5h-2c-2 0-3 1.3-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8.5c0-.3.2-.5.5-.5H14z" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="#" aria-label="TikTok" class="social">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v9.5a3 3 0 11-2.4-2.94V13a1.2 1.2 0 100 .8M14 4c.5 2.2 2 3.4 4 3.6" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Google Maps embed — vaheta q= parameetris aadress -->
+        <div class="contact-map reveal">
+          <iframe
+            title="Meeli kohvik asukoht kaardil"
+            src="https://maps.google.com/maps?q=Pilka%20tee%205-6%2C%20Luunja%20vald%2C%20Eesti&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Meeli kohvik</span>
+        <p>Aeglane lõuna, hea kohv.</p>
+      </div>
+
+      <nav class="footer-links" aria-label="Jaluse lingid">
+        <a href="#hours">Lahtiolek</a>
+        <a href="#menu">Menüü</a>
+        <a href="#reserve">Broneerimine</a>
+        <a href="#about">Meist</a>
+        <a href="#contact">Kontakt</a>
+      </nav>
+
+      <p class="footer-copy">© <span id="year"></span> Meeli kohvik. Kõik õigused kaitstud.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

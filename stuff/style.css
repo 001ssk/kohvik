@@ -1,0 +1,921 @@
+/* ============================================================
+   KOHVIK KANEL — stiilileht
+   Struktuur:
+   1. Muutujad (värvid, fondid, vahed)   ← MUUDA VÄRVE SIIN
+   2. Baas & tüpograafia
+   3. Korduvad elemendid (nupud, sildid, section)
+   4. Päis + navigatsioon
+   5. Hero
+   6. Lahtiolek
+   7. Menüü
+   8. Broneerimine
+   9. Meist
+   10. Kontakt
+   11. Footer
+   12. Animatsioonid (scroll reveal, aur)
+   13. Responsiivsus (tahvel, mobiil)
+   ============================================================ */
+
+/* 1. ────────── MUUTUJAD ────────── */
+:root {
+  /* Värvipalett — pruun / valge / punane. Muuda siin, muutub kõikjal. */
+  --c-espresso: #2A1710;   /* kõige tumedam pruun (tekst, hero-kate) */
+  --c-coffee:   #3E2519;   /* rikkalik pruun */
+  --c-mocha:    #6F4A34;   /* keskmine pruun */
+  --c-taupe:    #A98B78;   /* tuhm pruun (jooned, teisejärguline tekst) */
+  --c-cream:    #FAF4EC;   /* soe valge — lehe taust */
+  --c-cream-2:  #F2E8DB;   /* veidi tumedam kreem (vahelduvad sektsioonid) */
+  --c-paper:    #FFFFFF;   /* puhas valge — kaardid */
+  --c-red:      #A65A38;   /* soojem accent */
+  --c-red-dark: #754025;   /* hover */
+
+  --c-ink:      #2A1710;   /* pealkirjade tekst */
+  --c-body:     #4E3B2D;   /* põhitekst */
+
+  /* Fondid */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body:    "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-mono:    "DM Mono", ui-monospace, "Courier New", monospace;
+
+  /* Ruum ja raadius */
+  --wrap:   1180px;   /* max sisulaius */
+  --gutter: clamp(20px, 5vw, 48px);
+  --radius: 14px;
+  --shadow: 0 18px 55px -24px rgba(42, 23, 16, 0.42);
+
+  --header-h: 74px;
+}
+
+/* 2. ────────── BAAS & TÜPOGRAAFIA ────────── */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--c-cream);
+  color: var(--c-body);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, svg, iframe { max-width: 100%; display: block; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--c-ink);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Klaviatuuri-fookus — nähtav ja järjepidev */
+:focus-visible {
+  outline: 3px solid var(--c-red);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 8px;
+  background: var(--c-espresso);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  z-index: 200;
+}
+.skip-link:focus { left: 12px; }
+
+/* 3. ────────── KORDUVAD ELEMENDID ────────── */
+
+/* Väike silt sektsiooni kohal */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-red);
+  margin: 0 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  background: var(--c-red);
+  display: inline-block;
+}
+.eyebrow-light { color: #E9C9B0; }
+.eyebrow-light::before { background: #E9C9B0; }
+
+.section {
+  padding-block: clamp(64px, 9vw, 120px);
+}
+.section-head {
+  max-width: 620px;
+  margin-bottom: clamp(36px, 5vw, 60px);
+}
+.section-title {
+  font-size: clamp(30px, 5vw, 52px);
+}
+.section-lead {
+  margin: 18px 0 0;
+  color: var(--c-mocha);
+  font-size: 1.05rem;
+}
+
+/* Nupud */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.98rem;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: transform .25s ease, background-color .25s ease, color .25s ease, box-shadow .25s ease;
+  will-change: transform;
+}
+.btn-red {
+  background: var(--c-red);
+  color: #fff;
+  box-shadow: 0 10px 26px -12px rgba(178, 58, 46, 0.7);
+}
+.btn-red:hover { background: var(--c-red-dark); transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,0.5);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+.btn-block { width: 100%; }
+
+/* 4. ────────── PÄIS + NAVIGATSIOON ────────── */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: var(--header-h);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  transition: background-color .35s ease, box-shadow .35s ease;
+}
+/* Kerimisel muutub päis läbipaistmatuks (klass lisatakse JS-ga) */
+.site-header.scrolled {
+  background: rgba(250, 244, 236, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 rgba(42, 23, 16, 0.08);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.32rem;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: -0.01em;
+  transition: color .35s ease;
+}
+.brand-mark {
+  width: 15px; height: 15px;
+  border-radius: 50%;
+  background: var(--c-red);
+  box-shadow: 0 0 0 4px rgba(178,58,46,0.2);
+  flex: none;
+}
+.scrolled .brand { color: var(--c-ink); }
+
+.nav {
+  display: flex;
+  gap: 34px;
+  margin-left: auto;
+  margin-right: 30px;
+}
+.nav a {
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.98rem;
+  position: relative;
+  transition: color .3s ease;
+}
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 100%; height: 2px;
+  background: var(--c-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s ease;
+}
+.nav a:hover::after { transform: scaleX(1); }
+.scrolled .nav a { color: var(--c-ink); }
+
+.nav-cta { padding: 10px 20px; }
+
+/* Mobiilinupp (hamburger) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px; height: 44px;
+  background: none; border: none; cursor: pointer;
+  padding: 0;
+}
+.nav-toggle span {
+  width: 26px; height: 2px;
+  background: #fff;
+  margin-inline: auto;
+  transition: transform .3s ease, opacity .3s ease, background-color .35s ease;
+}
+.scrolled .nav-toggle span { background: var(--c-ink); }
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-nav[hidden] { display: none; }   /* hidden peab display:flex't ületama */
+.mobile-nav {
+  position: absolute;
+  top: var(--header-h);
+  left: 0; right: 0;
+  background: var(--c-cream);
+  padding: 18px var(--gutter) 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: var(--shadow);
+  border-top: 1px solid rgba(42,23,16,0.08);
+}
+.mobile-nav a {
+  padding: 12px 4px;
+  font-weight: 500;
+  color: var(--c-ink);
+  border-bottom: 1px solid rgba(42,23,16,0.07);
+}
+.mobile-nav .btn { margin-top: 12px; color: #fff; }
+
+/* 5. ────────── HERO ────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #fff;
+}
+.hero-note {
+  margin-top: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: rgba(42, 23, 16, 0.36);
+  border: 1px solid rgba(255,255,255,0.16);
+  backdrop-filter: blur(8px);
+  color: rgba(255,255,255,0.92);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.hero-note-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.28);
+}
+.hero-note-badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #7ee08a;
+  box-shadow: 0 0 0 4px rgba(126,224,138,0.2);
+}
+/* HERO TAUSTAPILT — vaheta url() oma pildiga */
+.hero-bg {
+  position: absolute;
+  inset: -8% 0;                    /* veidi suurem, et parallax ei paljastaks servi */
+  background: var(--c-coffee) url("https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=2000&q=80") center/cover no-repeat;
+  will-change: transform;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  /* Soe tume kate, et tekst oleks loetav */
+  background:
+    linear-gradient(180deg, rgba(42,23,16,0.35) 0%, rgba(42,23,16,0.55) 55%, rgba(42,23,16,0.8) 100%),
+    linear-gradient(90deg, rgba(42,23,16,0.55), rgba(42,23,16,0.1));
+  z-index: 1;
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+  padding-block: 110px 90px;
+}
+.hero-title {
+  color: #fff;
+  font-size: clamp(64px, 9.4vw, 128px);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-weight: 400;
+  margin: 8px 0 0;
+  text-wrap: balance;
+}
+.hero-title em {
+  font-style: italic;
+  color: #F3D8C2;
+}
+.hero-sub {
+  max-width: 640px;
+  margin: 28px 0 0;
+  font-size: 1.18rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 38px;
+}
+
+/* Dekoratiivne aur hero nurgas */
+.steam {
+  position: absolute;
+  right: 8%;
+  bottom: 12%;
+  width: 60px;
+  height: 120px;
+  z-index: 2;
+  opacity: 0.5;
+}
+.steam path {
+  fill: none;
+  stroke: #F3D8C2;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 120;
+  animation: steam-rise 4s ease-in-out infinite;
+}
+.steam path:nth-child(2) { animation-delay: 1.2s; }
+
+/* Kerimisvihje */
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+}
+.scroll-cue-line {
+  width: 1px; height: 46px;
+  background: linear-gradient(rgba(255,255,255,0.7), transparent);
+  animation: cue-slide 2s ease-in-out infinite;
+}
+
+/* 6. ────────── LAHTIOLEK ────────── */
+.hours { background: var(--c-cream-2); }
+.hours-summary {
+  margin-top: 24px;
+}
+.hours-summary-inner {
+  display: grid;
+  gap: 16px;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(130, 77, 50, 0.08), rgba(255, 255, 255, 0.9));
+  border: 1px solid rgba(42, 23, 16, 0.08);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+.hours-summary-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-mocha);
+}
+.hours-summary-time {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 1;
+  color: var(--c-espresso);
+}
+.hours-summary-copy {
+  margin: 0;
+  max-width: 560px;
+  color: var(--c-ink);
+  font-size: 1.02rem;
+}
+
+/* 7. ────────── MENÜÜ ────────── */
+.menu-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.menu-category-title {
+  font-size: 1.35rem;
+  margin: 0 0 16px;
+}
+.menu-tab {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(42,23,16,0.15);
+  background: transparent;
+  color: var(--c-mocha);
+  cursor: pointer;
+  transition: all .25s ease;
+}
+.menu-tab:hover { border-color: var(--c-red); color: var(--c-red); }
+.menu-tab.is-active {
+  background: var(--c-espresso);
+  border-color: var(--c-espresso);
+  color: #fff;
+}
+
+.menu-panel { animation: fade-in .5s ease; }
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+.menu-item {
+  break-inside: avoid;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(42,23,16,0.1);
+}
+/* Ülemine rida: nimi · punktjoon · hind */
+.menu-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.menu-row h3 {
+  font-size: 1.25rem;
+  flex: 0 1 auto;
+}
+/* Punktjoon nime ja hinna vahel — klassikaline menüükaardi võte */
+.menu-leader {
+  flex: 1 1 auto;
+  min-width: 24px;
+  border-bottom: 2px dotted rgba(42,23,16,0.22);
+  transform: translateY(-5px);
+}
+.menu-price {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--c-red);
+  white-space: nowrap;
+}
+.menu-desc {
+  margin: 7px 0 0;
+  font-size: 0.95rem;
+  color: var(--c-mocha);
+}
+.menu-note {
+  margin-top: 34px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--c-taupe);
+}
+
+/* 8. ────────── BRONEERIMINE ────────── */
+.reserve {
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.05), transparent 32%),
+    linear-gradient(135deg, #2A1710, #482416);
+  color: var(--c-cream);
+}
+.reserve .section-title,
+.reserve h2 { color: #fff; }
+.reserve .section-lead { color: rgba(255,255,255,0.78); }
+.reserve-inner {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+}
+.reserve-points {
+  list-style: none;
+  margin: 30px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.reserve-points li {
+  position: relative;
+  padding-left: 28px;
+  color: rgba(255,255,255,0.85);
+}
+.reserve-points li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 9px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--c-red);
+}
+
+.reserve-form {
+  background: linear-gradient(180deg, #fffdf9, #fdf7f1);
+  border-radius: 22px;
+  padding: clamp(24px, 3vw, 38px);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(42,23,16,0.08);
+}
+.reserve-form-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.reserve-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(166, 90, 56, 0.11);
+  color: var(--c-red-dark);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.reserve-form-summary {
+  display: grid;
+  gap: 2px;
+  text-align: right;
+}
+.reserve-summary-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-taupe);
+}
+.reserve-form-summary strong {
+  color: var(--c-espresso);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.field { display: flex; flex-direction: column; margin-bottom: 16px; }
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.field label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-mocha);
+  margin-bottom: 7px;
+}
+.field .optional { text-transform: none; letter-spacing: 0; color: var(--c-taupe); }
+.field input,
+.field select,
+.field textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--c-ink);
+  background: var(--c-paper);
+  border: 1.5px solid rgba(42,23,16,0.15);
+  border-radius: 12px;
+  padding: 14px 15px;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.field select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--c-mocha) 50%),
+    linear-gradient(135deg, var(--c-mocha) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) calc(50% - 3px),
+    calc(100% - 13px) calc(50% - 3px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 36px;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--c-red);
+  box-shadow: 0 0 0 3px rgba(178,58,46,0.15);
+  transform: translateY(-1px);
+}
+.field textarea { resize: vertical; }
+.form-status {
+  margin: 14px 0 0;
+  font-size: 0.9rem;
+  color: var(--c-red);
+  min-height: 1.2em;
+}
+.form-status.ok { color: #2e7d4f; }
+
+@media (max-width: 860px) {
+  .reserve-inner {
+    grid-template-columns: 1fr;
+  }
+  .reserve-form-summary {
+    text-align: left;
+  }
+}
+
+@media (max-width: 560px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 9. ────────── MEIST ────────── */
+.about-inner {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: clamp(36px, 6vw, 78px);
+  align-items: center;
+}
+.about-media {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--c-cream-2);   /* varutaust, kui pilt ei lae */
+  box-shadow: var(--shadow);
+}
+.about-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+}
+.about-badge {
+  position: absolute;
+  left: 18px; bottom: 18px;
+  background: var(--c-red);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+.about-copy {
+  max-width: 640px;
+}
+.about-copy .section-title {
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 1.08;
+  margin-bottom: 20px;
+}
+.about-copy p { margin: 0 0 18px; }
+.values {
+  list-style: none;
+  margin: 30px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+}
+.values li {
+  display: flex;
+  gap: 18px;
+  align-items: baseline;
+  padding-top: 18px;
+  border-top: 1px solid rgba(42,23,16,0.12);
+}
+.value-num {
+  font-family: var(--font-mono);
+  color: var(--c-red);
+  font-size: 0.95rem;
+  flex: none;
+}
+.value-body strong { color: var(--c-ink); }
+
+/* 10. ────────── KONTAKT ────────── */
+.contact { background: var(--c-cream-2); }
+.contact-inner {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(36px, 5vw, 70px);
+  align-items: stretch;
+}
+.contact-list {
+  margin: 30px 0 0;
+  display: grid;
+  gap: 22px;
+}
+.contact-list dt {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-red);
+  margin-bottom: 4px;
+}
+.contact-list dd {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--c-ink);
+}
+.contact-list a:hover { color: var(--c-red); }
+
+.socials { display: flex; gap: 12px; margin-top: 34px; }
+.social {
+  width: 46px; height: 46px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  border: 1.5px solid rgba(42,23,16,0.15);
+  color: var(--c-coffee);
+  transition: all .25s ease;
+}
+.social svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+.social:hover {
+  background: var(--c-red);
+  border-color: var(--c-red);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.contact-map {
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 340px;
+  box-shadow: var(--shadow);
+  background: var(--c-cream);
+}
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  border: 0;
+  /* Väike toonimine, et kaart sobiks paletti (eemalda soovi korral) */
+  filter: sepia(0.15) saturate(1.05);
+}
+
+/* 11. ────────── FOOTER ────────── */
+.site-footer {
+  background: var(--c-espresso);
+  color: rgba(255,255,255,0.75);
+  padding-block: 56px;
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: #fff;
+  flex-wrap: wrap;
+}
+.footer-brand p {
+  width: 100%;
+  margin: 6px 0 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.55);
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 22px; }
+.footer-links a {
+  font-size: 0.95rem;
+  transition: color .25s ease;
+}
+.footer-links a:hover { color: #fff; }
+.footer-copy {
+  width: 100%;
+  margin: 20px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  color: rgba(255,255,255,0.5);
+}
+
+/* 12. ────────── ANIMATSIOONID ────────── */
+/* Scroll reveal — JS lisab .is-visible, kui element on vaates */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes steam-rise {
+  0%   { stroke-dashoffset: 120; opacity: 0; }
+  35%  { opacity: 0.6; }
+  100% { stroke-dashoffset: -60; opacity: 0; }
+}
+@keyframes cue-slide {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%      { transform: translateY(8px); opacity: 0.4; }
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* 13. ────────── RESPONSIIVSUS ────────── */
+
+/* Tahvel */
+@media (max-width: 900px) {
+  .nav, .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+
+  .reserve-inner,
+  .about-inner,
+  .contact-inner {
+    grid-template-columns: 1fr;
+  }
+  .about-media { max-width: 460px; }
+}
+
+/* Mobiil */
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .hero-inner { padding-block: 110px 80px; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { width: 100%; }
+  .hero-note { font-size: 0.78rem; }
+  .field-row { grid-template-columns: 1fr; }
+  .steam { display: none; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+
+/* Väldi animatsioone, kui kasutaja on need välja lülitanud */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
