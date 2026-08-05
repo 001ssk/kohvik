@@ -900,10 +900,22 @@ a { color: inherit; text-decoration: none; }
 /* Mobiil */
 @media (max-width: 560px) {
   body { font-size: 16px; }
-  .hero-inner { padding-block: 110px 80px; }
+  .hero-inner { padding-block: 94px 72px; }
+  .hero-title {
+    font-size: clamp(46px, 14vw, 68px);
+    line-height: 0.96;
+  }
+  .hero-sub {
+    max-width: 100%;
+    font-size: 1rem;
+  }
   .hero-actions { flex-direction: column; align-items: stretch; }
   .hero-actions .btn { width: 100%; }
-  .hero-note { font-size: 0.78rem; }
+  .hero-note {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.78rem;
+  }
   .field-row { grid-template-columns: 1fr; }
   .steam { display: none; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
